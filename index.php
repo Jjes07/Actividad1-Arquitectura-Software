@@ -9,10 +9,19 @@
 
 <div class="card">
 
-<?php if (isset($_GET['estado']) && $_GET['estado'] === 'ok'): ?>
+<?php if (isset($_GET['estado'])): ?>
 
-    <h2>Guardado correctamente</h2>
-    <p>Tu nombre fue almacenado en la base de datos.</p>
+    <?php if ($_GET['estado'] === 'ok'): ?>
+        <h2>Guardado correctamente</h2>
+
+    <?php elseif ($_GET['estado'] === 'fail'): ?>
+        <h2>Error al guardar</h2>
+        <p>Inténtalo nuevamente.</p>
+
+    <?php else: ?>
+        <h2>Datos inválidos</h2>
+
+    <?php endif; ?>
 
     <a href="index.php" class="btn">Volver</a>
 
